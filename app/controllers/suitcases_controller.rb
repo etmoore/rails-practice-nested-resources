@@ -25,11 +25,11 @@ class SuitcasesController < ApplicationController
   end
 
   def edit
-    @suitcase = Suitcase.find(params[:id])
+    @suitcase = @passenger.suitcases.find(params[:id])
   end
 
   def update
-    @suitcase = Suitcase.find(params[:id])
+    @suitcase = @passenger.suitcases.find(params[:id])
     if @suitcase.update(suitcase_params)
       redirect_to passenger_suitcase_path(@passenger, @suitcase)
     else
