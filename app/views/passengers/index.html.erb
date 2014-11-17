@@ -2,27 +2,21 @@
   <h1>Passengers</h1>
 </div>
 
-<% if @passengers.present? %>
-  <table class="table">
-    <thead>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @passengers.each do |passenger| %>
       <tr>
-        <th>Name</th>
-        <th></th>
+        <td><%= passenger.name %></td>
+        <td>
+          <%= link_to "suitcases", passenger_suitcases_path(passenger) %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @passengers.each do |passenger| %>
-        <tr>
-          <td><%= passenger.name %></td>
-          <td>
-            <em>link to the suitcases for this passenger here</em>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <div class="jumbotron">
-    <h1>You forgot to run <code>rake db:seed</code></h1>
-  </div>
-<% end %>
+    <% end %>
+  </tbody>
+</table>
